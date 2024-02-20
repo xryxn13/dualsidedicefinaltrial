@@ -25,6 +25,7 @@ class DiceMosaicApp:
         st.title("Dice Mosaic Generator")
 
         self.image_path1 = st.file_uploader("Select Image 1:", type=["png", "jpg", "jpeg"])
+        st.image(self.image_path1, caption="Selected Image 1",width=300)
 
         if self.image_path1:
             image1 = Image.open(self.image_path1)
@@ -41,7 +42,7 @@ class DiceMosaicApp:
                 buf = BytesIO()
                 fixed1.save(buf, format="PNG")
                 self.image_1 = fixed1
-                st.image(fixed1, caption="Selected Image 1",width=100)
+                st.image(fixed1, caption="Selected Image 1",width=300)
 
             if st.button("Black Background"):
                 # Create a white background image with the same size
@@ -53,24 +54,39 @@ class DiceMosaicApp:
                 buf = BytesIO()
                 fixed1.save(buf, format="PNG")
                 self.image_1 = fixed1
-                st.image(fixed1, caption="Selected Image 1",width=100)
+                st.image(fixed1, caption="Selected Image 1",width=300)
 
         self.image_path2 = st.file_uploader("Select Image 2:", type=["png", "jpg", "jpeg"])
+        st.image(self.image_path2, caption="Selected Image 2",width=300)
+        
         if self.image_path2:
             image2 = Image.open(self.image_path2)
             fixed2 = remove(image2)
             fixed2 = fixed2.convert("RGBA")
+
+            if st.button("White Background"):
+                # Create a white background image with the same size
+                white_background = Image.new("RGBA", fixed2.size, (255, 255, 255, 255))
+        
+                # Composite the fixed image over the white background
+                fixed2 = Image.alpha_composite(white_background, fixed2)
     
-            # Create a white background image with the same size
-            white_background = Image.new("RGBA", fixed2.size, (255, 255, 255, 255))
+                buf = BytesIO()
+                fixed2.save(buf, format="PNG")
+                self.image_2 = fixed2
+                st.image(fixed2, caption="Selected Image 2",width=100)
+
+            if st.button("Black Background"):
+                # Create a white background image with the same size
+                black_background = Image.new("RGBA", fixed2.size, (0, 0, 0, 255))
+        
+                # Composite the fixed image over the white background
+                fixed2 = Image.alpha_composite(black_background, fixed2)
     
-            # Composite the fixed image over the white background
-            fixed2 = Image.alpha_composite(white_background, fixed2)
-    
-            buf = BytesIO()
-            fixed2.save(buf, format="PNG")
-            self.image_2 = fixed2
-            st.image(fixed2, caption="Selected Image 2",width=100)
+                buf = BytesIO()
+                fixed2.save(buf, format="PNG")
+                self.image_2 = fixed2
+                st.image(fixed2, caption="Selected Image 2",width=100)
             
         if st.button("Convert to Mosaic"):
             self.convert_to_mosaic()
@@ -212,8 +228,8 @@ class DiceMosaicApp:
             output_image2.save('mosaic_output2.png')
 
             # Display the output images in the Streamlit app
-            st.image('mosaic_output1.png', caption="Mosaic Image 1", use_column_width=True)
-            st.image('mosaic_output2.png', caption="Mosaic Image 2", use_column_width=True)
+            st.image('mosaic_output1.png', caption="Mosaic Image 1",width=300)
+            st.image('mosaic_output2.png', caption="Mosaic Image 2",width=300)
 
             # Save CSV and create PDF
             pdf_path = self.save_csv_and_pdf(pix_val1, pix_val2)
