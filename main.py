@@ -85,7 +85,7 @@ class DiceMosaicApp:
                 self.image_2 = fixed2
                 st.image(fixed2, caption="Selected Image 2",width=300)
             
-        if st.button("Convert to Mosaic"):
+        if st.button("Convert to Mosaic",type='primary'):
             self.convert_to_mosaic()
     
     def convert_to_mosaic(self):
