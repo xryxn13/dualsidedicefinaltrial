@@ -67,8 +67,9 @@ class DiceMosaicApp:
             self.convert_to_mosaic()
 
         col1, col2 = st.columns(2)
-        col1.write("Original Image :camera:")
-        col2.write("Fixed Image :wrench:")
+        col1.image("DiceImages/ramanujan.jpg")
+        col2.image("DiceImages/cvraman.jpg")
+        
     def convert_to_mosaic(self):
         if self.image_path1 and self.image_path2:
             numDiceWide = 100
