@@ -40,7 +40,7 @@ class DiceMosaicApp:
             buf = BytesIO()
             fixed1.save(buf, format="PNG")
             self.image_1 = fixed1
-            st.image(fixed1, caption="Selected Image 1", use_column_width=True)
+            st.image(fixed1, caption="Selected Image 1", use_column_width=True,width=100)
 
         self.image_path2 = st.file_uploader("Select Image 2:", type=["png", "jpg", "jpeg"])
         if self.image_path2:
@@ -57,7 +57,7 @@ class DiceMosaicApp:
             buf = BytesIO()
             fixed2.save(buf, format="PNG")
             self.image_2 = fixed2
-            st.image(fixed2, caption="Selected Image 2", use_column_width=True)
+            st.image(fixed2, caption="Selected Image 2", use_column_width=True,width=100)
             
         if st.button("Convert to Mosaic"):
             self.convert_to_mosaic()
