@@ -36,17 +36,12 @@ class DiceMosaicApp:
         if self.image_path2:
             image2 = Image.open(self.image_path2)
             fixed2 = remove(image2)
-            fixed2=self.convert_image(img=fixed2)
+            buf = BytesIO()
+            fixed2.save(buf, format="PNG")
             st.image(self.fixed2, caption="Selected Image 2", use_column_width=True)
             
         if st.button("Convert to Mosaic"):
             self.convert_to_mosaic()
-    
-    def convert_image(img):
-        buf = BytesIO()
-        img.save(buf, format="PNG")
-        byte_im = buf.getvalue()
-        return byte_im
     
     def convert_to_mosaic(self):
         if self.image_path1 and self.image_path2:
