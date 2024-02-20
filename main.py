@@ -29,7 +29,6 @@ class DiceMosaicApp:
             fixed1 = remove(image1)
             buf = BytesIO()
             fixed1.save(buf, format="PNG")
-            byte_im = buf.getvalue()
             st.image(fixed1, caption="Selected Image 1", use_column_width=True)
 
         self.image_path2 = st.file_uploader("Select Image 2:", type=["png", "jpg", "jpeg"])
@@ -48,8 +47,8 @@ class DiceMosaicApp:
             numDiceWide = 100
             numDiceTall = 100
 
-            source_image1 = Image.open(self.fixed1)
-            source_image2 = Image.open(self.fixed2)
+            source_image1 = Image.open(fixed1)
+            source_image2 = Image.open(fixed2)
             die_one = Image.open("DiceImages/1.png")
             die_two = Image.open("DiceImages/2.png")
             die_three = Image.open("DiceImages/3.png")
