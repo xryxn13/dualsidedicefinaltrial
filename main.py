@@ -17,10 +17,6 @@ class DiceMosaicApp:
     def __init__(self):
         self.image_path1 = None
         self.image_path2 = None
-        self.fixed1 = None
-        self.fixed2 = None
-        self.image1 = None
-        self.image2 = None
         st.set_page_config(layout="wide")
         st.sidebar.title("Center For Creative Learning")
         st.sidebar.image("DiceImages/ccl.png")
@@ -34,7 +30,7 @@ class DiceMosaicApp:
             buf = BytesIO()
             fixed1.save(buf, format="PNG")
             byte_im = buf.getvalue()
-            st.image(self.fixed1, caption="Selected Image 1", use_column_width=True)
+            st.image(fixed1, caption="Selected Image 1", use_column_width=True)
 
         self.image_path2 = st.file_uploader("Select Image 2:", type=["png", "jpg", "jpeg"])
         if self.image_path2:
