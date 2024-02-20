@@ -29,9 +29,17 @@ class DiceMosaicApp:
         if self.image_path1:
             image1 = Image.open(self.image_path1)
             fixed1 = remove(image1)
+            fixed1 = fixed1.convert("RGBA")
+    
+            # Create a white background image with the same size
+            white_background = Image.new("RGBA", fixed1.size, (255, 255, 255, 255))
+    
+            # Composite the fixed image over the white background
+            fixed1 = Image.alpha_composite(white_background, fixed1)
+    
             buf = BytesIO()
             fixed1.save(buf, format="PNG")
-            self.image_1=fixed1
+            self.image_1 = fixed1
             st.image(fixed1, caption="Selected Image 1", use_column_width=True)
 
         self.image_path2 = st.file_uploader("Select Image 2:", type=["png", "jpg", "jpeg"])
