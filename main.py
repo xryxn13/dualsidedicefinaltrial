@@ -15,54 +15,35 @@ class DiceMosaicApp:
     def __init__(self):
         self.image_path1 = None
         self.image_path2 = None
+        self.fixed1 = None
+        self.fixed2 = None
         st.set_page_config(layout="wide")
         st.sidebar.title("Center For Creative Learning")
         st.sidebar.image("DiceImages/ccl.png")
         st.title("Dice Mosaic Generator")
 
         self.image_path1 = st.file_uploader("Select Image 1:", type=["png", "jpg", "jpeg"])
+        image1 = Image.open(self.image_path1)
+        fixed1 = remove(image1)
         if self.image_path1:
-            st.image(self.image_path1, caption="Selected Image 1", use_column_width=True)
+            st.image(self.fixed1, caption="Selected Image 1", use_column_width=True)
 
         self.image_path2 = st.file_uploader("Select Image 2:", type=["png", "jpg", "jpeg"])
+        image2 = Image.open(self.image_path2)
+        fixed2 = remove(image2)
         if self.image_path2:
-            st.image(self.image_path2, caption="Selected Image 2", use_column_width=True)
-        
-        if self.image_path1 is not None:
-            if self.image_path1.size > MAX_FILE_SIZE:
-                st.error("The uploaded file is too large. Please upload an image smaller than 5MB.")
-        else:
-            self.image_path1=self.fix_image1(upload1=self.image_path1)
-
-        if self.image_path2 is not None:
-            if self.image_path2.size > MAX_FILE_SIZE:
-                st.error("The uploaded file is too large. Please upload an image smaller than 5MB.")
-        else:
-            self.image_path2=self.fix_image2(upload2=self.image_path2)
-
+            st.image(self.fixed2, caption="Selected Image 2", use_column_width=True)
+            
         if st.button("Convert to Mosaic"):
             self.convert_to_mosaic()
-    
-    def fix_image1(upload1):
-        image1 = Image.open(upload1)
-        fixed1 = remove(image1)
-        st.write("Fixed Image :wrench:")
-        return st.image(fixed1)
-        
-    def fix_image2(upload2):
-        image2 = Image.open(upload2)
-        fixed2 = remove(image2)
-        st.write("Fixed Image :wrench:")
-        return st.image(fixed2)
-
 
     def convert_to_mosaic(self):
         if self.image_path1 and self.image_path2:
             numDiceWide = 100
             numDiceTall = 100
 
-            source_image1 = Image.open(self.image_path1)
-            source_image2 = Image.open(self.image_path2)
+            source_image1 = Image.open(self.fixed1)
+            source_image2 = Image.open(self.fixed2)
             die_one = Image.open("DiceImages/1.png")
             die_two = Image.open("DiceImages/2.png")
             die_three = Image.open("DiceImages/3.png")
