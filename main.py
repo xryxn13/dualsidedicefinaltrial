@@ -71,7 +71,7 @@ class DiceMosaicApp:
                 buf = BytesIO()
                 fixed2.save(buf, format="PNG")
                 self.image_2 = fixed2
-                st.image(fixed2, caption="Selected Image 2",width=100)
+                st.image(fixed2, caption="Selected Image 2",width=300)
 
             if st.button("Black Background (Image 2)"):
                 # Create a white background image with the same size
@@ -83,7 +83,7 @@ class DiceMosaicApp:
                 buf = BytesIO()
                 fixed2.save(buf, format="PNG")
                 self.image_2 = fixed2
-                st.image(fixed2, caption="Selected Image 2",width=100)
+                st.image(fixed2, caption="Selected Image 2",width=300)
             
         if st.button("Convert to Mosaic"):
             self.convert_to_mosaic()
