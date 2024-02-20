@@ -8,6 +8,8 @@ from PIL import Image
 import csv
 from rembg import remove
 import base64
+from io import BytesIO
+
 MAX_FILE_SIZE = 5 * 1024 * 1024  # 5MB
 
 
