@@ -38,7 +38,7 @@ class DiceMosaicApp:
             fixed2 = remove(image2)
             buf = BytesIO()
             fixed2.save(buf, format="PNG")
-            st.image(self.fixed2, caption="Selected Image 2", use_column_width=True)
+            st.image(fixed2, caption="Selected Image 2", use_column_width=True)
             
         if st.button("Convert to Mosaic"):
             self.convert_to_mosaic()
