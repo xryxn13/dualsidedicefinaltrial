@@ -46,9 +46,17 @@ class DiceMosaicApp:
         if self.image_path2:
             image2 = Image.open(self.image_path2)
             fixed2 = remove(image2)
+            fixed2 = fixed2.convert("RGBA")
+    
+            # Create a white background image with the same size
+            white_background = Image.new("RGBA", fixed2.size, (255, 255, 255, 255))
+    
+            # Composite the fixed image over the white background
+            fixed2 = Image.alpha_composite(white_background, fixed2)
+    
             buf = BytesIO()
             fixed2.save(buf, format="PNG")
-            self.image_2=fixed2
+            self.image_2 = fixed2
             st.image(fixed2, caption="Selected Image 2", use_column_width=True)
             
         if st.button("Convert to Mosaic"):
