@@ -32,28 +32,28 @@ class DiceMosaicApp:
             if self.image_path1.size > MAX_FILE_SIZE:
                 st.error("The uploaded file is too large. Please upload an image smaller than 5MB.")
         else:
-            self.image_path1=self.fix_image1(upload=self.image_path1)
+            self.image_path1=self.fix_image1(upload1=self.image_path1)
 
         if self.image_path2 is not None:
             if self.image_path2.size > MAX_FILE_SIZE:
                 st.error("The uploaded file is too large. Please upload an image smaller than 5MB.")
         else:
-            self.image_path2=self.fix_image1(upload=self.image_path2)
+            self.image_path2=self.fix_image2(upload2=self.image_path2)
 
         if st.button("Convert to Mosaic"):
             self.convert_to_mosaic()
     
-    def fix_image1(upload):
-        image = Image.open(upload)
-        fixed = remove(image)
+    def fix_image1(upload1):
+        image1 = Image.open(upload1)
+        fixed1 = remove(image1)
         st.write("Fixed Image :wrench:")
-        return st.image(fixed)
+        return st.image(fixed1)
         
-    def fix_image2(upload):
-        image = Image.open(upload)
-        fixed = remove(image)
+    def fix_image2(upload2):
+        image2 = Image.open(upload2)
+        fixed2 = remove(image2)
         st.write("Fixed Image :wrench:")
-        return st.image(fixed)
+        return st.image(fixed2)
 
 
     def convert_to_mosaic(self):
