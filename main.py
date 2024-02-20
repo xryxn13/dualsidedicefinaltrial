@@ -17,6 +17,8 @@ class DiceMosaicApp:
     def __init__(self):
         self.image_path1 = None
         self.image_path2 = None
+        self.image_1 = None
+        self.image_2 = None
         st.set_page_config(layout="wide")
         st.sidebar.title("Center For Creative Learning")
         st.sidebar.image("DiceImages/ccl.png")
@@ -28,7 +30,7 @@ class DiceMosaicApp:
             image1 = Image.open(self.image_path1)
             fixed1 = remove(image1)
             buf = BytesIO()
-            self.image_path1=fixed1.save(buf, format="PNG")
+            self.image_1=fixed1.save(buf, format="PNG")
             st.image(fixed1, caption="Selected Image 1", use_column_width=True)
 
         self.image_path2 = st.file_uploader("Select Image 2:", type=["png", "jpg", "jpeg"])
@@ -36,7 +38,7 @@ class DiceMosaicApp:
             image2 = Image.open(self.image_path2)
             fixed2 = remove(image2)
             buf = BytesIO()
-            self.image_path2=fixed2.save(buf, format="PNG")
+            self.image_2=fixed2.save(buf, format="PNG")
             st.image(fixed2, caption="Selected Image 2", use_column_width=True)
             
         if st.button("Convert to Mosaic"):
@@ -47,8 +49,8 @@ class DiceMosaicApp:
             numDiceWide = 100
             numDiceTall = 100
 
-            source_image1 = Image.open(self.image_path1)
-            source_image2 = Image.open(self.image_path2)
+            source_image1 = Image.open(self.image_1)
+            source_image2 = Image.open(self.image_2)
             die_one = Image.open("DiceImages/1.png")
             die_two = Image.open("DiceImages/2.png")
             die_three = Image.open("DiceImages/3.png")
