@@ -30,7 +30,7 @@ class DiceMosaicApp:
             fixed1 = remove(image1)
             fixed1 = fixed1.convert("RGBA")
     
-            if st.button("White Background (Image 1)"):
+            if st.button("White Background (Image 1)",type='secondary'):
                 # Create a white background image with the same size
                 white_background = Image.new("RGBA", fixed1.size, (255, 255, 255, 255))
     
@@ -42,7 +42,7 @@ class DiceMosaicApp:
                 self.image_1 = fixed1
                 st.image(fixed1, caption="Selected Image 1",width=300)
 
-            if st.button("Black Background (Image 1)"):
+            if st.button("Black Background (Image 1)",type='secondary'):
                 # Create a white background image with the same size
                 Black_background = Image.new("RGBA", fixed1.size, (0, 0, 0, 225))
     
@@ -61,7 +61,7 @@ class DiceMosaicApp:
             fixed2 = remove(image2)
             fixed2 = fixed2.convert("RGBA")
 
-            if st.button("White Background (Image 2)"):
+            if st.button("White Background (Image 2)",type='secondary'):
                 # Create a white background image with the same size
                 white_background = Image.new("RGBA", fixed2.size, (255, 255, 255, 255))
         
@@ -73,7 +73,7 @@ class DiceMosaicApp:
                 self.image_2 = fixed2
                 st.image(fixed2, caption="Selected Image 2",width=300)
 
-            if st.button("Black Background (Image 2)"):
+            if st.button("Black Background (Image 2)",type='secondary'):
                 # Create a white background image with the same size
                 black_background = Image.new("RGBA", fixed2.size, (0, 0, 0, 255))
         
