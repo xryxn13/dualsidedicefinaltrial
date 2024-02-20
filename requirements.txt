@@ -1,4 +1,4 @@
 streamlit==1.7.0
-rembg==1.0.4
+rembg==2.0.50
 Pillow==9.0.1
 reportlab==3.6.0
