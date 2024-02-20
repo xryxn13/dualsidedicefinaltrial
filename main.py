@@ -17,6 +17,8 @@ class DiceMosaicApp:
         self.image_path2 = None
         self.fixed1 = None
         self.fixed2 = None
+        self.image1 = None
+        self.image2 = None
         st.set_page_config(layout="wide")
         st.sidebar.title("Center For Creative Learning")
         st.sidebar.image("DiceImages/ccl.png")
