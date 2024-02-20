@@ -29,14 +29,14 @@ class DiceMosaicApp:
         if self.image_path1:
             image1 = Image.open(self.image_path1)
             fixed1 = remove(image1)
-            fixed1=convert_image(fixed1)
+            fixed1=self.convert_image(fixed1)
             st.image(self.fixed1, caption="Selected Image 1", use_column_width=True)
 
         self.image_path2 = st.file_uploader("Select Image 2:", type=["png", "jpg", "jpeg"])
         if self.image_path2:
             image2 = Image.open(self.image_path2)
             fixed2 = remove(image2)
-            fixed2=convert_image(fixed2)
+            fixed2=self.convert_image(fixed2)
             st.image(self.fixed2, caption="Selected Image 2", use_column_width=True)
             
         if st.button("Convert to Mosaic"):
