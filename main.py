@@ -51,8 +51,8 @@ class DiceMosaicApp:
             numDiceWide = 100
             numDiceTall = 100
 
-            source_image1 = Image.open(self.image_1)
-            source_image2 = Image.open(self.image_2)
+            source_image1 = image_1
+            source_image2 = image_2
             die_one = Image.open("DiceImages/1.png")
             die_two = Image.open("DiceImages/2.png")
             die_three = Image.open("DiceImages/3.png")
