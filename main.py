@@ -29,7 +29,9 @@ class DiceMosaicApp:
         if self.image_path1:
             image1 = Image.open(self.image_path1)
             fixed1 = remove(image1)
-            fixed1=self.convert_image(img=fixed1)
+            buf = BytesIO()
+            fixed1.save(buf, format="PNG")
+            byte_im = buf.getvalue()
             st.image(self.fixed1, caption="Selected Image 1", use_column_width=True)
 
         self.image_path2 = st.file_uploader("Select Image 2:", type=["png", "jpg", "jpeg"])
