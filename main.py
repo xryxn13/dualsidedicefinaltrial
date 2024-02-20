@@ -45,7 +45,7 @@ class DiceMosaicApp:
 
             if st.button("Black Background"):
                 # Create a white background image with the same size
-                Black_background = Image.new("RGBA", fixed1.size, (0, 0, 0, 0))
+                Black_background = Image.new("RGBA", fixed1.size, (0, 0, 0, 225))
     
                 # Composite the fixed image over the white background
                 fixed1 = Image.alpha_composite(Black_background, fixed1)
