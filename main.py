@@ -31,16 +31,29 @@ class DiceMosaicApp:
             fixed1 = remove(image1)
             fixed1 = fixed1.convert("RGBA")
     
-            # Create a white background image with the same size
-            white_background = Image.new("RGBA", fixed1.size, (255, 255, 255, 255))
+            if st.button("White Background"):
+                # Create a white background image with the same size
+                white_background = Image.new("RGBA", fixed1.size, (255, 255, 255, 255))
     
-            # Composite the fixed image over the white background
-            fixed1 = Image.alpha_composite(white_background, fixed1)
+                # Composite the fixed image over the white background
+                fixed1 = Image.alpha_composite(white_background, fixed1)
     
-            buf = BytesIO()
-            fixed1.save(buf, format="PNG")
-            self.image_1 = fixed1
-            st.image(fixed1, caption="Selected Image 1",width=100)
+                buf = BytesIO()
+                fixed1.save(buf, format="PNG")
+                self.image_1 = fixed1
+                st.image(fixed1, caption="Selected Image 1",width=100)
+
+            if st.button("Black Background"):
+                # Create a white background image with the same size
+                Black_background = Image.new("RGBA", fixed1.size, (0, 0, 0, 0))
+    
+                # Composite the fixed image over the white background
+                fixed1 = Image.alpha_composite(Black_background, fixed1)
+    
+                buf = BytesIO()
+                fixed1.save(buf, format="PNG")
+                self.image_1 = fixed1
+                st.image(fixed1, caption="Selected Image 1",width=100)
 
         self.image_path2 = st.file_uploader("Select Image 2:", type=["png", "jpg", "jpeg"])
         if self.image_path2:
