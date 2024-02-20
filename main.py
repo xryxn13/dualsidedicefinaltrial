@@ -25,8 +25,6 @@ class DiceMosaicApp:
         st.title("Dice Mosaic Generator")
 
         self.image_path1 = st.file_uploader("Select Image 1:", type=["png", "jpg", "jpeg"])
-        st.image(self.image_path1, caption="Selected Image 1",width=300)
-
         if self.image_path1:
             image1 = Image.open(self.image_path1)
             fixed1 = remove(image1)
@@ -57,7 +55,6 @@ class DiceMosaicApp:
                 st.image(fixed1, caption="Selected Image 1",width=300)
 
         self.image_path2 = st.file_uploader("Select Image 2:", type=["png", "jpg", "jpeg"])
-        st.image(self.image_path2, caption="Selected Image 2",width=300)
         
         if self.image_path2:
             image2 = Image.open(self.image_path2)
