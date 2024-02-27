@@ -66,7 +66,7 @@ class DiceMosaicApp:
         if st.button("Convert to Mosaic",type='primary'):
             self.convert_to_mosaic()
 
-        st.image("DiceImages/mosaic1.png")
+        st.image("DiceImages/mosaic1.png",width=400)
         
     def convert_to_mosaic(self):
         if self.image_path1 and self.image_path2:
